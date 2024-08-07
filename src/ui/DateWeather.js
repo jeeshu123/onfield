@@ -12,7 +12,7 @@ export default function DateWeather() {
   return (
     <div className="flex justify-between px-6 py-3 bg-stone-200 text-sm md:text-base">
       <p>{formattedDate}</p>
-      <p>{"Wea"}</p>
+      <p>{"Wehhghgha"}</p>
     </div>
   );
 }
