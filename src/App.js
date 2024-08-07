@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Breaking from "./ui/Breaking";
+import CTA from "./ui/CTA";
+import DateWeather from "./ui/DateWeather";
+import Footer from "./ui/Footer";
+import Header from "./ui/Header";
+import Latest from "./ui/Latest";
+import Navbar from "./ui/NavBar";
+import Scores from "./ui/Scores";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <DateWeather />
+      <Header />
+      <Navbar />
+      <Scores />
+      <Breaking />
+      <Latest />
+      <CTA />
+      <Footer />
+    </>
   );
 }
-
-export default App;
