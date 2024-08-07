@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <div className="flex items-center justify-between px-6 py-3 md:px-12 md:my-6">
       <p className="font-extrabold italic text-xl sm:text-3xl md:text-4xl">
-        <span className="text-green-800">On</span>Field
+        <span className="text-green-800">Sports</span>Plus
       </p>
       <div className="flex items-center gap-3 text-xs md:text-base md:gap-6">
         <p className="flex items-center gap-2">
