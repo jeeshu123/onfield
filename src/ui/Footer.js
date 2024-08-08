@@ -7,7 +7,7 @@ export default function Footer() {
       <p className="font-extrabold italic text-xl sm:text-3xl md:text-4xl text-center my-6">
         <span className="text-green-800">Sports</span>Plus
       </p>
-      <ul className="flex text-xs flex-wrap justify-center gap-4 md:text-sm w-9/12 mx-auto md:w-1/2">
+      <ul className="flex text-xs flex-wrap justify-center gap-4 md:text-sm w-9/12 mx-auto md:w-1/2 py-10">
         <li>
           <p>About</p>
         </li>
