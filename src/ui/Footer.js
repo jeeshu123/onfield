@@ -27,7 +27,7 @@ export default function Footer() {
           <p>Get Help</p>
         </li>
       </ul>
-      <div className="flex gap-4 justify-center pb-10">
+      <div className="flex gap-4 justify-center py-5">
         <FaFacebook color="#166534" />
         <FaX color="#166534" />
         <FaInstagram color="#166534" />
