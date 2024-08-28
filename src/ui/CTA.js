@@ -5,7 +5,7 @@ export default function CTA() {
         <div className="flex flex-col gap-2 justify-center md:gap-4">
           {/* <span className="text-green-400">&larr;</span> */}
           <p className="text-xs font-semibold sm:text-sm md:text-2xl">
-            Sign Up for the OnField Daily News Letter
+            Sign Up for the SportsPlus Daily News Letter
           </p>
           <p className="text-xs sm:text-sm md:text-base">
             Our biggest stories, delivered to your inbox everyday.

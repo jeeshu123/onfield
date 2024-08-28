@@ -36,13 +36,13 @@ const newsArray = [
 ];
 
 export default function Breaking() {
-  const [news, setNews] = useState(newsArray);
+  const [news] = useState(newsArray);
 
   return (
     <div className="mt-9 px-4 md:px-12">
       <p className="italic font-extrabold text-2xl ">Breaking News</p>
       <div className="mt-4 relative">
-        <img src={bg1} className="sm:h-96 w-full lg:h-[36rem] brightness-50" />
+        <img src={bg1} className="sm:h-96 w-full lg:h-[36rem] brightness-50" alt="breaking"/>
         <p className="absolute bottom-0 text-slate-50 py-4 px-2">
           The Hidden Gems Of The US Open: Outside The Gates At Practice Courts
           P6 To P17
