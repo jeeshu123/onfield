@@ -1,23 +1,20 @@
 import ScoreList from "./ScoreList";
 import DropDown from "../components/DropDown";
 import { useSportsContext } from "../context/SportsContext";
+import { filterScores } from "../helpers/helper";
+import RaceList from "./RaceList";
 
 export default function Scores() {
-  const { data } = useSportsContext();
+  const { selectedData, userFavourite } = useSportsContext();
 
-  const { userFavourite } = useSportsContext();
-
-  // console.log(userFavourite);
   return (
     <>
-      <div className="flex justify-between items-center px-12 py-3 mt-6 text-sm md:text-base">
-        <div className="flex gap-3 items-center">
-          <DropDown content={userFavourite} />
-          <div>Today</div>
-        </div>
-        <div>All Scores</div>
+      <div className="flex justify-between items-center px-4 sm:px-12 py-3 mt-6 text-sm md:text-base">
+        <DropDown content={userFavourite} />
+        <div>2024</div>
       </div>
-      <ScoreList scores={data} />
+      {selectedData.category === "Football" && <ScoreList />}
+      {selectedData.category === "Formula1" && <RaceList />}
     </>
   );
 }

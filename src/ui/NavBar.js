@@ -18,7 +18,7 @@ export default function Navbar() {
         </svg>
       </div>
       <nav className="hidden sm:block">
-        <ul className="flex items-center gap-3 divide-x-2">
+        <ul className="flex items-center gap-6">
           <li>
             <a href="#id">Home</a>
           </li>

@@ -1,5 +1,5 @@
 export default function ScoreItem({ scoreItem }) {
-  const date = new Date();
+  const date = new Date(scoreItem.fixture.date);
   const options = {
     weekday: "short",
     day: "2-digit",
@@ -8,10 +8,11 @@ export default function ScoreItem({ scoreItem }) {
   };
 
   const formattedDate = new Intl.DateTimeFormat("en-GB", options).format(date);
+  // console.log(formattedDate);
   return (
     <div className="flex flex-col gap-3 text-xs sm:text-sm">
       <p className="text-xs">
-        {scoreItem.fixture.status.short !== "NS"
+        {scoreItem.fixture.status.short === "FT"
           ? scoreItem.fixture.status.short
           : formattedDate}
       </p>

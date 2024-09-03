@@ -4,10 +4,10 @@ import { useSportsContext } from "../context/SportsContext";
 export default function DropDown({ content }) {
   const [isOpen, setIsOpen] = useState(false);
   const [favourites, setFavourites] = useState(content);
-  const { getData } = useSportsContext();
+  const { getData, updateSelectedData } = useSportsContext();
 
   const handleChange = (index) => {
-    const id = favourites.at(index).id;
+    const selected = favourites.at(index);
     const newFavourites = [...favourites];
 
     const temp = newFavourites[0];
@@ -16,7 +16,8 @@ export default function DropDown({ content }) {
 
     setFavourites(newFavourites);
     setIsOpen(false);
-    getData(id);
+    getData(selected);
+    updateSelectedData(selected);
   };
 
   return (
