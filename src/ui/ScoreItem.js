@@ -1,14 +1,8 @@
-export default function ScoreItem({ scoreItem }) {
-  const date = new Date(scoreItem.fixture.date);
-  const options = {
-    weekday: "short",
-    day: "2-digit",
-    month: "short",
-    // year: "numeric",
-  };
+import { getShortDate } from "../helpers/helper";
 
-  const formattedDate = new Intl.DateTimeFormat("en-GB", options).format(date);
-  // console.log(formattedDate);
+export default function ScoreItem({ scoreItem }) {
+  const formattedDate = getShortDate(scoreItem.fixture.date);
+
   return (
     <div className="flex flex-col gap-3 text-xs sm:text-sm">
       <p className="text-xs">
