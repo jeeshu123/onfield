@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSportsContext } from "../context/SportsContext";
 
 export default function DropDown({ content }) {
   const [isOpen, setIsOpen] = useState(false);
   const [favourites, setFavourites] = useState(content);
   const { getData, updateSelectedData } = useSportsContext();
+  const dropdownRef = useRef(null);
 
   const handleChange = (index) => {
     const selected = favourites.at(index);
@@ -20,8 +21,22 @@ export default function DropDown({ content }) {
     updateSelectedData(selected);
   };
 
+  // Close dropdown if clicked outside
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="w-40 relative">
+    <div className="w-40 relative" ref={dropdownRef}>
       <div
         className="flex justify-between cursor-pointer duration-300"
         onClick={() => setIsOpen(!isOpen)}
