@@ -1,7 +1,7 @@
 import ScoreList from "./ScoreList";
 import DropDown from "../components/DropDown";
 import { useSportsContext } from "../context/SportsContext";
-import { filterScores } from "../helpers/helper";
+// import { filterScores } from "../helpers/helper";
 import RaceList from "./RaceList";
 
 export default function Scores() {
