@@ -38,7 +38,7 @@ import { useSportsContext } from "../context/SportsContext";
 import { getShortDate, shortHandTitle } from "../helpers/helper";
 
 export default function RaceList() {
-  const { isLoading, data } = useSportsContext();
+  const { isLoading, fixtureData } = useSportsContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRace, setSelectedRace] = useState(null);
 
@@ -56,8 +56,8 @@ export default function RaceList() {
     <div className="relative">
       <div className="flex overflow-x-scroll gap-4 h-32 mt-4 bg-slate-100 py-4 px-6 md:px-12 relative">
         {isLoading && <span className="loader"></span>}
-        {data.response &&
-          data.response.map((raceItem) => (
+        {fixtureData.response &&
+          fixtureData.response.map((raceItem) => (
             <RaceItem key={raceItem.id} race={raceItem} onClick={openModal} />
           ))}
       </div>

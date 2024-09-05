@@ -3,9 +3,9 @@ import { filterScores } from "../helpers/helper";
 import ScoreItem from "./ScoreItem";
 
 export default function ScoreList() {
-  const { isLoading, selectedData, data } = useSportsContext();
+  const { isLoading, selectedData, fixtureData } = useSportsContext();
 
-  const scores = filterScores(data);
+  const scores = filterScores(fixtureData);
 
   return (
     <div className="flex overflow-x-scroll gap-9 h-32 mt-4 bg-slate-100 py-4 px-6 md:px-12 relative">

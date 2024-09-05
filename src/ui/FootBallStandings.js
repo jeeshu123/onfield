@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+// import DropDown from "../components/DropDown";
+import { useSportsContext } from "../context/SportsContext";
+import SportsDropdown, { Dropdown } from "../components/SportsDropDown";
 
 const columns = [
   "Pos",
@@ -14,50 +17,53 @@ const columns = [
 ];
 
 export default function FootBallStandings() {
-  const [standings, setStandings] = useState();
+  const { userFavourite, fetchFootballStandings, standingsData } =
+    useSportsContext();
+
+  const [selectedSport, setSelectedSport] = useState({});
 
   useEffect(() => {
-    async function fetchStandings() {
-      const res = await fetch(
-        `https://sportsplus-server.vercel.app/api/football/standings`
-      );
-      const data = await res.json();
-      setStandings(data);
-    }
-    fetchStandings();
-  }, []);
+    fetchFootballStandings(selectedSport);
+  }, [selectedSport]);
+
   return (
-    <div className="flex flex-col gap-2 overflow-x-scroll">
-      <table
-        className=""
-        style={{ borderSpacing: "20px 10px", borderCollapse: "separate" }}
-      >
-        <thead>
-          <tr>
-            {columns.map((column, index) => (
-              <th
-                className={`${index === 1 ? "min-w-40 text-center" : ""}`}
-                key={index}
-              >
-                {column}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {standings &&
-            standings.standings.map((standing) => (
-              <Team standing={standing} key={standing.rank} />
-            ))}
-        </tbody>
-      </table>
+    <div className="">
+      <Dropdown
+        options={userFavourite}
+        onSelect={(sport) => setSelectedSport(sport)}
+      />
+      <div className="overflow-x-scroll">
+        <table
+          className=""
+          style={{ borderSpacing: "20px 10px", borderCollapse: "separate" }}
+        >
+          <thead>
+            <tr>
+              {columns.map((column, index) => (
+                <th
+                  className={`${index === 1 ? "min-w-44 text-center" : ""}`}
+                  key={index}
+                >
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {standingsData &&
+              standingsData.standings.map((standing) => (
+                <Team standing={standing} key={standing.rank} />
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
 
 function Team({ standing }) {
   return (
-    <tr className="text-xs md:text-base">
+    <tr className="text-xs md:text-sm">
       <td>{standing.rank}</td>
       <td className="flex items-center gap-2">
         <img

@@ -11,7 +11,8 @@ const sportData = [
 ];
 
 const initialState = {
-  data: [],
+  fixtureData: [],
+  standingsData: null,
   userFavourite: sportData,
   selectedData: {},
   isLoading: false,
@@ -20,14 +21,18 @@ const initialState = {
 const sportsReducer = (state, action) => {
   switch (action.type) {
     case "GET_DATA":
-      return { ...state, data: [], isLoading: true };
+      return { ...state, fixtureData: [], isLoading: true };
     case "LOAD_DATA":
       return {
         ...state,
-        data: action.payload.data,
+        fixtureData: action.payload.data,
         selectedData: action.payload.selectedData,
         isLoading: false,
       };
+    case "GET_STANDINGS_DATA":
+      return { ...state, standingsData: null };
+    case "LOAD_STANDINGS_DATA":
+      return { ...state, standingsData: action.payload.data };
     case "UPDATE_SELECTED":
       return { ...state, selectedData: action.payload };
     default:
@@ -38,8 +43,10 @@ const sportsReducer = (state, action) => {
 const SportsContext = createContext();
 
 export const SportsProvider = ({ children }) => {
-  const [{ data, userFavourite, isLoading, selectedData }, dispatch] =
-    useReducer(sportsReducer, initialState);
+  const [state, dispatch] = useReducer(sportsReducer, initialState);
+
+  const { fixtureData, userFavourite, isLoading, selectedData, standingsData } =
+    state;
 
   async function fetchFootballFixtures(selectedData) {
     try {
@@ -74,9 +81,35 @@ export const SportsProvider = ({ children }) => {
     }
   }
 
+  async function fetchFootballStandings(selectedData) {
+    try {
+      dispatch({ type: "GET_STANDINGS_DATA" });
+      console.log(selectedData);
+      const { id } = selectedData;
+      const res = await fetch(
+        `https://sportsplus-server.vercel.app/api/football/standings?league=${id}&season=2024`
+      );
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await res.json();
+      dispatch({
+        type: "LOAD_STANDINGS_DATA",
+        payload: { data, selectedData },
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  function updateFootBallData(data) {
+    fetchFootballFixtures(data);
+    fetchFootballStandings(data);
+  }
+
   useEffect(() => {
     userFavourite.at(0).category === "Football" &&
-      fetchFootballFixtures(userFavourite.at(0));
+      updateFootBallData(userFavourite.at(0));
   }, [userFavourite]);
 
   function getData(selectedData) {
@@ -93,11 +126,13 @@ export const SportsProvider = ({ children }) => {
   return (
     <SportsContext.Provider
       value={{
-        data,
+        fixtureData,
         userFavourite,
         isLoading,
         selectedData,
+        standingsData,
         updateSelectedData,
+        fetchFootballStandings,
         getData,
         dispatch,
       }}
