@@ -153,6 +153,8 @@ export const SportsProvider = ({ children }) => {
         selectedData,
         standingsData,
         updateSelectedData,
+        fetchFootballFixtures,
+        fetchFormula1Fixtures,
         fetchFootballStandings,
         fetchFormula1Standings,
         getData,
