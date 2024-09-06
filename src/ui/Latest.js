@@ -1,4 +1,4 @@
-import FootBallStandings from "./FootBallStandings";
+import Standings from "./Standings";
 
 export default function Latest() {
   return (
@@ -9,7 +9,7 @@ export default function Latest() {
         </div>
         <div>
           <p className="italic font-bold text-2xl">Standings</p>
-          <FootBallStandings />
+          <Standings />
         </div>
       </div>
     </div>

@@ -5,11 +5,13 @@ import { useSportsContext } from "../context/SportsContext";
 
 import RaceList from "./RaceList";
 import { Dropdown } from "../components/SportsDropDown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Scores() {
   const { selectedData, userFavourite } = useSportsContext();
   const [selectedSport, setSelectedSport] = useState();
+
+  useEffect(() => {}, []);
 
   return (
     <>

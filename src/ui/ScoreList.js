@@ -18,7 +18,7 @@ export default function ScoreList() {
           //   <ScoreItem scoreItem={scoreItem} />
           // )
         )}
-      {selectedData.category === "Formula1" && <p>Formula 1</p>}
+      {/* {selectedData.category === "Formula1" && <p>Formula 1</p>} */}
     </div>
   );
 }

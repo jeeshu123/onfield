@@ -102,9 +102,30 @@ export const SportsProvider = ({ children }) => {
     }
   }
 
+  async function fetchFormula1Standings(selectedData) {
+    try {
+      dispatch({ type: "GET_STANDINGS_DATA" });
+      console.log(selectedData);
+      const { id } = selectedData;
+      const res = await fetch(
+        `https://sportsplus-server.vercel.app/api/formula1/driverrankings`
+      );
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await res.json();
+      dispatch({
+        type: "LOAD_STANDINGS_DATA",
+        payload: { data, selectedData },
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
   function updateFootBallData(data) {
     fetchFootballFixtures(data);
-    fetchFootballStandings(data);
+    // fetchFootballStandings(data);
   }
 
   useEffect(() => {
@@ -133,6 +154,7 @@ export const SportsProvider = ({ children }) => {
         standingsData,
         updateSelectedData,
         fetchFootballStandings,
+        fetchFormula1Standings,
         getData,
         dispatch,
       }}
