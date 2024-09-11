@@ -15,9 +15,11 @@ const initialState = {
 
 const authReducer = (state, action) => {
   switch (action.type) {
-    default:
     case "USER_VALID":
       return { ...state, user: action.payload, isAuthenticated: true };
+    case "USER_LOGOUT":
+      return { ...state, user: null, isAuthenticated: false };
+    default:
       return state;
   }
 };
@@ -39,6 +41,10 @@ export const AuthProvider = ({ children }) => {
     return null;
   }
 
+  function logoutUser() {
+    dispatch({ type: "USER_LOGOUT" });
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -46,6 +52,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         user,
         validateUser,
+        logoutUser,
       }}
     >
       {children}

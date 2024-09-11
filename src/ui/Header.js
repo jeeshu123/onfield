@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
 export default function Header() {
-  const { isAuthenticated, user } = useAuthContext();
+  const { isAuthenticated, user, logoutUser } = useAuthContext();
   return (
     <div className="flex items-center justify-between px-6 py-3 md:px-12 md:my-6">
       <Link
@@ -13,9 +13,18 @@ export default function Header() {
       </Link>
       <div className="flex items-center gap-3 text-xs md:text-base md:gap-6">
         {isAuthenticated ? (
-          <p className=" text-green-950/100 px-4 py-2 rounded-full font-semibold">
-            Welcome, {user.name}
-          </p>
+          <>
+            <p className=" text-green-950/100 px-4 py-2 rounded-full font-semibold">
+              Welcome, {user.name}
+            </p>
+            <Link
+              to="/"
+              className="bg-green-800 text-green-200 px-4 py-2 rounded-full font-semibold"
+              onClick={logoutUser}
+            >
+              Log Out
+            </Link>
+          </>
         ) : (
           <>
             <p className="flex items-center gap-2">
