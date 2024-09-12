@@ -11,12 +11,15 @@ const initialState = {
   isAuthenticated: false,
   isLoading: false,
   user: null,
+  errorMessage:""
 };
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case "USER_VALID":
-      return { ...state, user: action.payload, isAuthenticated: true };
+      return { ...state, user: action.payload, isAuthenticated: true ,errorMessage:"" };
+    case "USER_NOT_FOUND":
+      return { ...state, errorMessage:"Email or Password Incorrect" };
     case "USER_LOGOUT":
       return { ...state, user: null, isAuthenticated: false };
     default:
@@ -29,7 +32,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const { isAuthenticated, isLoading, user } = state;
+  const { isAuthenticated, isLoading, user,errorMessage } = state;
 
   function validateUser(username, password) {
     console.log(userObj);
@@ -38,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: "USER_VALID", payload: userObj });
       return userObj;
     }
-    return null;
+    dispatch({type:"USER_NOT_FOUND"});
   }
 
   function logoutUser() {
@@ -51,6 +54,7 @@ export const AuthProvider = ({ children }) => {
         isLoading,
         isAuthenticated,
         user,
+        errorMessage,
         validateUser,
         logoutUser,
       }}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // export default function Login() {
 //   const [username, setUsername] = useState("Jeeshan");
@@ -43,7 +43,7 @@ export default function Login() {
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { validateUser } = useAuthContext();
+  const { validateUser,errorMessage } = useAuthContext();
 
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ export default function Login() {
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-bold mb-8 text-center">Login</h2>
-
+        <p className="text-xs text-red-800">{errorMessage}</p>
         {/* Username Field */}
         <div className="relative mb-6">
           <input
@@ -113,6 +113,7 @@ export default function Login() {
         >
           Login
         </button>
+      <Link to="/signup" className="text-xs font-medium flex items-center py-4">Dont have an account. Create Now! &rarr;</Link>
       </form>
     </div>
   );

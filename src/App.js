@@ -12,6 +12,7 @@ import HomePage from "./pages/HomePage";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import SignUp from "./pages/SignUp";
 
 // const router = createBrowserRouter([
 //   {
@@ -39,6 +40,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
 
             <Route
               path="/app"
