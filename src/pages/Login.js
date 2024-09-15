@@ -43,20 +43,24 @@ export default function Login() {
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { validateUser,errorMessage } = useAuthContext();
+  const { validateUser, errorMessage, isLoading } = useAuthContext();
 
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const user = validateUser(username, password);
+    const user = await validateUser({ username, password });
     if (user) navigate("/app");
+    // if (user) console.log("Okay");
   }
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
+      {isLoading && <span className="loader"></span>}
       <form
-        className="bg-white p-6 rounded-lg shadow-md w-96"
+        className={`bg-white p-6 rounded-lg shadow-md w-96  text-xs md:text-sm ${
+          isLoading ? "blur-sm" : ""
+        }`}
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-bold mb-8 text-center">Login</h2>
@@ -113,7 +117,12 @@ export default function Login() {
         >
           Login
         </button>
-      <Link to="/signup" className="text-xs font-medium flex items-center py-4">Dont have an account. Create Now! &rarr;</Link>
+        <Link
+          to="/signup"
+          className="text-xs font-medium flex items-center py-4"
+        >
+          Dont have an account. Create Now! &rarr;
+        </Link>
       </form>
     </div>
   );

@@ -9,8 +9,10 @@
     border-radius: 50%;
     position: absolute;
     animation: rotate 1s linear infinite;
-    top: 30%;
+    top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
   }
   .loader::before,
   .loader::after {
