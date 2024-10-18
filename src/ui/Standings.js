@@ -61,7 +61,7 @@ export default function Standings() {
       />
       <div className="overflow-x-scroll">
         <table
-          className=""
+          className="mx-auto"
           style={{ borderSpacing: "20px 10px", borderCollapse: "separate" }}
         >
           <Columns columns={columns} />

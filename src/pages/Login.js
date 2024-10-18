@@ -41,8 +41,8 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
   const [usernameFocus, setUsernameFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("ashfaq@gmail.com");
+  const [password, setPassword] = useState("ashfaq123");
   const { validateUser, errorMessage, isLoading } = useAuthContext();
 
   const navigate = useNavigate();

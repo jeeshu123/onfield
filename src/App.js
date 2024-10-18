@@ -13,6 +13,9 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SignUp from "./pages/SignUp";
+import { GrDashboard } from "react-icons/gr";
+import { NewsProvider } from "./context/NewsContext";
+import BreakingNewsArticle from "./pages/BreakingNewsArticle";
 
 // const router = createBrowserRouter([
 //   {
@@ -39,17 +42,23 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
 
             <Route
-              path="/app"
+              path="app"
               element={
                 <ProtectedRoute>
-                  <Application />
+                  <NewsProvider>
+                    <AppLayout />
+                  </NewsProvider>
                 </ProtectedRoute>
               }
-            />
+            >
+              {/* <Route path="dashboard" element={<Dashboard />} /> */}
+              <Route index element={<Application />} />
+              <Route path="breaking/:id" element={<BreakingNewsArticle />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </AuthProvider>

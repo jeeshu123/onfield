@@ -1,12 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
 
-const userObj = {
-  name: "Jeeshan",
-  username: "Jeeshan",
-  password: "jeeshan123",
-  id: 0,
-};
-
 const initialState = {
   isAuthenticated: false,
   isLoading: false,
