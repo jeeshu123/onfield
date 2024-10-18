@@ -39,10 +39,10 @@ export function NewsProvider({ children }) {
       let allArticles = [];
 
       for (const { sport } of sports) {
-        console.log(sport);
+        console.log(process.env.REACT_APP_API_KEY);
         try {
           const res = await fetch(
-            `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=100&apikey=b4d34c965938937e1c2c5dc6e9fb385f&q=top news in ${sport}`
+            `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=100&apikey=${process.env.REACT_APP_API_KEY}&q=top news in ${sport}`
           );
           const data = await res.json();
           const updatedArticles = data.articles.map((article) => ({
