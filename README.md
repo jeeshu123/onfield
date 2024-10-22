@@ -75,5 +75,5 @@ Make sure you have the following installed on your system:
 
 This application uses real-time sports data APIs to fetch live scores and updates. Here are the key APIs:
 
-[API_SPORTS](https://api-sports.io/): Provides real-time scores, stats, and schedules for various sports.
-[NewsCatcher](https://www.newscatcherapi.com/): Fetches the latest news articles related to sports events, players, and teams.
+- [API_SPORTS](https://api-sports.io/): Provides real-time scores, stats, and schedules for various sports.
+- [NewsCatcher](https://www.newscatcherapi.com/): Fetches the latest news articles related to sports events, players, and teams.
