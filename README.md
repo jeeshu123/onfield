@@ -16,8 +16,7 @@ The application offers features such as:
 3. [Project Structure](#project-structure)
 4. [Features](#features)
 5. [API Integration](#api-integration)
-6. [Contributing](#contributing)
-7. [License](#license)
+6. [License](#license)
 
 ## Technologies Used
 
@@ -48,3 +47,18 @@ Make sure you have the following installed on your system:
    ```bash
    git clone https://github.com/jeeshu123/onfield.git
    cd onfield
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+
+3. **Run Project:**
+
+   ```bash
+   npm start
+
+4. **In your local browser go to:**
+
+   ```bash
+   http://localhost:3000
