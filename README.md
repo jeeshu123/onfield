@@ -62,3 +62,18 @@ Make sure you have the following installed on your system:
 
    ```bash
    http://localhost:3000
+
+## Features
+
+- User Authentication: Users can sign up, log in, and manage their profiles.
+- Personalized News Feeds: Tailored content recommendations based on the user’s selected sports, teams, and past interactions.
+- Real-Time Scores and Updates: Live sports updates powered by real-time APIs.
+- Interactive Live Coverage: Users can follow matches, view stats, and interact during live events.
+- User Engagement: Users can like, comment on, and share articles and live updates.
+
+## API Integration
+
+This application uses real-time sports data APIs to fetch live scores and updates. Here are the key APIs:
+
+[API_SPORTS](https://api-sports.io/): Provides real-time scores, stats, and schedules for various sports.
+[NewsCatcher](https://www.newscatcherapi.com/): Fetches the latest news articles related to sports events, players, and teams.
