@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Sports News Recommendation Web Application - MERN Stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+**Sports News Web Application** is a dynamic and user-friendly platform aimed at delivering personalized sports news, real-time updates, and interactive live coverage for sports enthusiasts. Using cutting-edge content recommendation algorithms and real-time data APIs, the platform caters to the evolving needs of sports fans by offering a personalized, engaging, and seamless user experience. 
 
-In the project directory, you can run:
+The application offers features such as:
+- **Personalized News Feeds**: Tailored content based on user preferences and behavior.
+- **Real-Time Data**: Live scores, stats, and game updates using real-time APIs.
+- **Interactive Live Coverage**: In-depth, interactive coverage of live sporting events.
+- **User Engagement**: Features designed to enhance user engagement, such as comments, likes, and sharing options.
 
-### `npm start`
+## Table of Contents
+1. [Technologies Used](#technologies-used)
+2. [Installation and Setup](#installation-and-setup)
+3. [Project Structure](#project-structure)
+4. [Features](#features)
+5. [API Integration](#api-integration)
+6. [Contributing](#contributing)
+7. [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This web application is built using the following technologies:
 
-### `npm test`
+- **Frontend**: React.js, Redux (for state management), React Router
+- **Database**: MongoDB
+- **Real-Time Data**: APIs for live scores ([API_SPORTS](https://api-sports.io/)) and sports news ([NewsCatcher](https://www.newscatcherapi.com/))
+- **Authentication**: JWT (JSON Web Tokens) for secure user authentication
+- **Styling**: CSS, Tailwind CSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation and Setup
 
-### `npm run build`
+To set up the project locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Make sure you have the following installed on your system:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Node.js** (v14 or higher)
+- **MongoDB** (locally or using a cloud service like MongoDB Atlas)
+- **npm** (comes with Node.js)
 
-### `npm run eject`
+### Steps
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repository:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   git clone https://github.com/jeeshu123/onfield.git
+   cd onfield
