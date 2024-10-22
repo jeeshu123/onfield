@@ -13,10 +13,9 @@ The application offers features such as:
 ## Table of Contents
 1. [Technologies Used](#technologies-used)
 2. [Installation and Setup](#installation-and-setup)
-3. [Project Structure](#project-structure)
-4. [Features](#features)
-5. [API Integration](#api-integration)
-6. [License](#license)
+3. [Features](#features)
+4. [API Integration](#api-integration)
+5. [License](#license)
 
 ## Technologies Used
 
@@ -77,3 +76,7 @@ This application uses real-time sports data APIs to fetch live scores and update
 
 - [API_SPORTS](https://api-sports.io/): Provides real-time scores, stats, and schedules for various sports.
 - [NewsCatcher](https://www.newscatcherapi.com/): Fetches the latest news articles related to sports events, players, and teams.
+
+## License
+
+
