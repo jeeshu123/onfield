@@ -4,12 +4,16 @@ import { v4 as uuidV4 } from "uuid";
 
 const initialState = {
   breakingNews: [],
+  searchResult: [],
 };
 
 const newsReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_BREAKING_NEWS":
       return { ...state, breakingNews: action.payload };
+
+    case "UPDATE_SEARCH_RESULT":
+      return { ...state, searchResult: action.payload };
     default:
       return state;
   }
@@ -18,20 +22,13 @@ const newsReducer = (state, action) => {
 const NewsContext = createContext();
 
 export function NewsProvider({ children }) {
-  const [{ breakingNews }, dispatch] = useReducer(newsReducer, initialState);
+  const [{ breakingNews, searchResult }, dispatch] = useReducer(
+    newsReducer,
+    initialState
+  );
   const { user } = useAuthContext();
 
   useEffect(() => {
-    // async function fetchBreakingNews() {
-    //   console.log("AAA");
-    //   const res = await fetch(
-    //     `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=100&apikey=b4d34c965938937e1c2c5dc6e9fb385f&q=football`
-    //   );
-    //   console.log("BBB");
-    //   const data = await res.json();
-    //   console.log(data);
-    //   dispatch({ type: "UPDATE_BREAKING_NEWS", payload: data.articles });
-    // }
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     async function fetchBreakingNews() {
       const sports = user.preferredSports;
@@ -91,8 +88,16 @@ export function NewsProvider({ children }) {
     // recommendNews();
   }, [breakingNews, user.preferredSports]);
 
+  async function getSearchNews(query) {
+    const res = await fetch(
+      `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=100&apikey=${process.env.REACT_APP_API_KEY}&q=top news in ${query}`
+    );
+    const data = await res.json();
+    dispatch({ type: "UPDATE_SEARCH_RESULT", payload: data.articles });
+  }
+
   return (
-    <NewsContext.Provider value={{ breakingNews }}>
+    <NewsContext.Provider value={{ breakingNews, searchResult, getSearchNews }}>
       {children}
     </NewsContext.Provider>
   );

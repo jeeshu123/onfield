@@ -1,20 +1,30 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
-export default function Header() {
+export default function Header({
+  primaryColor = "text-green-800",
+  secondaryColor,
+}) {
   const { isAuthenticated, user, logoutUser } = useAuthContext();
   return (
-    <div className="flex items-center justify-between px-6 py-3 md:px-12 md:my-6">
+    <div className="flex items-center justify-between px-6 py-3 md:px-12 md:py-6 z-50">
       <Link
         to="/"
         className="font-extrabold italic text-xl sm:text-3xl md:text-4xl"
       >
-        <span className="text-green-800">Sports</span>Plus
+        {/* <span className={` ${primaryColor}`}>Sports</span>Plus */}
+        <span className={primaryColor}>Sports</span>
+        <span className={secondaryColor}>Plus</span>
       </Link>
       <div className="flex items-center gap-3 text-xs md:text-base md:gap-6">
         {isAuthenticated ? (
           <>
-            <p className=" text-green-950/100 px-4 py-2 rounded-full font-semibold">
+            {/* <p className=" text-green-950/100 px-4 py-2 rounded-full font-semibold">
+              Welcome, {user.firstName}
+            </p> */}
+            <p
+              className={`${primaryColor} px-4 py-2 rounded-full font-semibold`}
+            >
               Welcome, {user.firstName}
             </p>
             <svg
@@ -23,7 +33,8 @@ export default function Header() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6"
+              className={`${secondaryColor} size-6`}
+              // className="text-green-200 size-6"
             >
               <path
                 strokeLinecap="round"

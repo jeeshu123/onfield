@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-  createBrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { SportsProvider } from "./context/SportsContext";
 import Application from "./pages/Application";
 import AppLayout from "./ui/AppLayout";
@@ -13,26 +7,10 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SignUp from "./pages/SignUp";
-import { GrDashboard } from "react-icons/gr";
 import { NewsProvider } from "./context/NewsContext";
 import BreakingNewsArticle from "./pages/BreakingNewsArticle";
-
-// const router = createBrowserRouter([
-//   {
-//     element: <AppLayout />,
-//     // errorElement: <Error />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <Home />,
-//       },
-//       {
-//         path: "/app",
-//         element: <Application />,
-//       },
-//     ],
-//   },
-// ]);
+import SearchResults from "./pages/SearchResults";
+// import Login from "./components/Auth";
 
 export default function App() {
   return (
@@ -42,6 +20,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            {/* <Route path="login" element={<Login />} /> */}
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
 
@@ -58,6 +37,7 @@ export default function App() {
               {/* <Route path="dashboard" element={<Dashboard />} /> */}
               <Route index element={<Application />} />
               <Route path="breaking/:id" element={<BreakingNewsArticle />} />
+              <Route path="search" element={<SearchResults />} />
             </Route>
           </Routes>
         </BrowserRouter>

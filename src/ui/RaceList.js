@@ -54,7 +54,7 @@ export default function RaceList() {
 
   return (
     <div className="relative">
-      <div className="flex overflow-x-scroll gap-4 h-32 mt-4 bg-slate-100 py-4 px-6 md:px-12 relative">
+      <div className="flex overflow-x-scroll gap-4 h-32 mt-4 py-4 px-6 md:px-12 relative">
         {isLoading && <span className="loader"></span>}
         {fixtureData.response &&
           fixtureData.response.map((raceItem) => (
@@ -73,7 +73,7 @@ function RaceItem({ race, onClick }) {
 
   return (
     <div
-      className="text-xs md:text-sm min-w-44 bg-slate-200 py-2 px-1 rounded-md cursor-pointer"
+      className="text-xs md:text-sm min-w-44 bg-stone-500 py-2 px-1 rounded-md cursor-pointer"
       onClick={() => onClick(race)}
     >
       <p className="font-medium">

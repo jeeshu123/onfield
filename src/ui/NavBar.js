@@ -1,4 +1,15 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Navbar() {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  function handleSearch() {
+    if (!query) return;
+
+    navigate(`search?query=${query}`);
+  }
   return (
     <div className="flex items-center justify-between flex-wrap px-4 text-sm md:text-base md:px-12">
       <div className="block sm:hidden">
@@ -46,6 +57,13 @@ export default function Navbar() {
         type="text"
         placeholder="Search..."
         className="bg-slate-300 rounded-full px-3 py-1 text-slate-90000"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch();
+          }
+        }}
       />
     </div>
   );

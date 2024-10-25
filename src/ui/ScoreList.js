@@ -8,7 +8,7 @@ export default function ScoreList() {
   const scores = filterScores(fixtureData);
 
   return (
-    <div className="flex overflow-x-scroll gap-9 h-32 mt-4 bg-slate-100 py-4 px-6 md:px-12 relative">
+    <div className="flex overflow-x-scroll gap-9 h-32 mt-4 py-4 px-6 md:px-12 relative">
       {isLoading && <span className="loader"></span>}
       {scores &&
         selectedData.category === "Football" &&
