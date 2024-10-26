@@ -13,7 +13,9 @@ export default function ScoreList() {
       {scores &&
         selectedData.category === "Football" &&
         scores.map(
-          (scoreItem) => <ScoreItem scoreItem={scoreItem} />
+          (scoreItem) => (
+            <ScoreItem scoreItem={scoreItem} key={scoreItem.fixture.id} />
+          )
           // scoreItem.fixture.status.short !== "TBD" && (
           //   <ScoreItem scoreItem={scoreItem} />
           // )

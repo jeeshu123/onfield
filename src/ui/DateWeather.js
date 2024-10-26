@@ -17,7 +17,7 @@ export default function DateWeather() {
         `https://api.openweathermap.org/data/3.0/onecall?lat=6.9271&lon=79.8612&appid=26637bf6ea165ee2533ff29f3e9e866b`
       );
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
     }
     fetchWeather();
   }, []);

@@ -30,3 +30,18 @@ export function getShortDate(dateToFormat) {
   const formattedDate = new Intl.DateTimeFormat("en-GB", options).format(date);
   return formattedDate;
 }
+
+export function filterSearchReuslts(newArticles, oldArticles) {
+  const allArticles = [...newArticles, ...oldArticles];
+  const uniqueArticles = [];
+  const titles = new Set();
+
+  for (const article of allArticles) {
+    if (!titles.has(article.title)) {
+      titles.add(article.title);
+      uniqueArticles.push(article);
+    }
+  }
+
+  return uniqueArticles;
+}

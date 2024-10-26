@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useAuthContext } from "./AuthContext";
 import { v4 as uuidV4 } from "uuid";
+import { filterSearchReuslts } from "../helpers/helper";
 
 const initialState = {
   breakingNews: [],
@@ -11,7 +12,8 @@ const newsReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_BREAKING_NEWS":
       return { ...state, breakingNews: action.payload };
-
+    case "EMPTY_SEARCH":
+      return { ...state, searchResult: [] };
     case "UPDATE_SEARCH_RESULT":
       return { ...state, searchResult: action.payload };
     default:
@@ -36,10 +38,10 @@ export function NewsProvider({ children }) {
       let allArticles = [];
 
       for (const { sport } of sports) {
-        console.log(process.env.REACT_APP_API_KEY);
+        // console.log(process.env.REACT_APP_API_KEY);
         try {
           const res = await fetch(
-            `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=100&apikey=${process.env.REACT_APP_API_KEY}&q=top news in ${sport}`
+            `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=20&apikey=881cefbac483ca0515571d78c689f2cd&q=top news in ${sport}`
           );
           const data = await res.json();
           const updatedArticles = data.articles.map((article) => ({
@@ -88,12 +90,38 @@ export function NewsProvider({ children }) {
     // recommendNews();
   }, [breakingNews, user.preferredSports]);
 
-  async function getSearchNews(query) {
+  // async function getSearchNews(query) {
+  //   dispatch({ type: "EMPTY_SEARCH" });
+  //   const res = await fetch(
+  //     `https://gnews.io/api/v4/search?q=${query}&apikey=881cefbac483ca0515571d78c689f2cd&max=20&lang=en&in=title`
+  //   );
+  //   // const res = await fetch(
+  //   //   `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=20&apikey=881cefbac483ca0515571d78c689f2cd&q=top news in ${query}`
+  //   // );
+  //   const data = await res.json();
+  //   const articles = filterSearchReuslts(data.articles, []);
+  //   dispatch({ type: "UPDATE_SEARCH_RESULT", payload: articles });
+  // }
+  async function getSearchNews(query, page = 1, isNewSearch = true) {
+    if (isNewSearch) {
+      dispatch({ type: "EMPTY_SEARCH" });
+    }
+
     const res = await fetch(
-      `https://gnews.io/api/v4/top-headlines?category=sports&lang=en&max=100&apikey=${process.env.REACT_APP_API_KEY}&q=top news in ${query}`
+      `https://gnews.io/api/v4/search?q=${query}&page=${page}&apikey=881cefbac483ca0515571d78c689f2cd&max=20&lang=en&in=title`
     );
     const data = await res.json();
-    dispatch({ type: "UPDATE_SEARCH_RESULT", payload: data.articles });
+
+    const articles = filterSearchReuslts(
+      data.articles,
+      isNewSearch ? [] : searchResult
+    );
+
+    dispatch({ type: "UPDATE_SEARCH_RESULT", payload: articles });
+  }
+
+  async function searchMoreResults() {
+    
   }
 
   return (

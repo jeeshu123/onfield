@@ -84,7 +84,7 @@ export const SportsProvider = ({ children }) => {
   async function fetchFootballStandings(selectedData) {
     try {
       dispatch({ type: "GET_STANDINGS_DATA" });
-      console.log(selectedData);
+      // console.log(selectedData);
       const { id } = selectedData;
       const res = await fetch(
         `https://sportsplus-server.vercel.app/api/football/standings?league=${id}&season=2024`

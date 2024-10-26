@@ -40,7 +40,7 @@ import { getShortDate } from "../helpers/helper";
 export default function Breaking() {
   // const [news] = useState(newsArray);
   const { breakingNews } = useNewsContext();
-  breakingNews && console.log(breakingNews);
+  // breakingNews && console.log(breakingNews);
   return (
     <div className="mt-9 px-4 md:px-12">
       <p className="italic font-extrabold text-2xl ">Breaking News</p>

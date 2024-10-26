@@ -21,7 +21,7 @@ export default function Login() {
   return (
     <>
       <Navbar />
-      <div className="grid grid-cols-[1fr_3fr] min-h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] min-h-screen px-4 md:px-0">
         <div className="bg-green-600/50 flex flex-col px-4 py-8 text-green-200 relative">
           {isLoading && <span className="loader"></span>}
           <p className="font-bold text-center text-3xl tracking-wide mb-6">
@@ -31,16 +31,21 @@ export default function Login() {
             <FaGoogle className="border-green-200 border-2 rounded-full text-4xl p-1" />
           </div>
           <p className="text-sm mb-4 ">or use your account.</p>
+          <p className="text-sm text-red-900">{errorMessage}</p>
           <div className="flex flex-col gap-4 mb-4">
             <input
               className="bg-green-100 text-stone-800 p-2 rounded-md"
               placeholder="Email"
               type="email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <input
               className="bg-green-100 text-stone-800 p-2 rounded-md"
               placeholder="Password"
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <p className="text-xs mb-6">Forgot your password ?</p>
@@ -51,7 +56,9 @@ export default function Login() {
             Sign In
           </button>
         </div>
-        <div>{/* <img src={image} alt="" /> */}</div>
+        <div className="hidden md:block">
+          AA{/* <img src={image} alt="" /> */}
+        </div>
       </div>
     </>
   );
