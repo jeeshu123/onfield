@@ -26,8 +26,9 @@ function SearchResults() {
   };
 
   return (
-    <div className="mt-12 px-12">
+    <div className="mt-12 px-2 md:px-12">
       <p>Search Results for {query}</p>
+
       <InfiniteScroll
         dataLength={searchResult.length}
         next={fetchMoreData}
@@ -46,11 +47,11 @@ export default SearchResults;
 
 function SearchItem({ result }) {
   return (
-    <div className="w-1/2 mx-auto">
-      <div className="grid grid-cols-2 gap-x-2">
+    <div className="w-full md:w-1/2 mx-auto mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-x-2">
         <img src={result.image} alt="" />
         <div>
-          <p className="text-xs">{result.title}</p>
+          <p className="text-xs font-bold mb-2">{result.title}</p>
           <p className="text-xs">{result.description}</p>
           {/* <p className="text-xs">{result.title}</p> */}
         </div>
