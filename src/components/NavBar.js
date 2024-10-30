@@ -31,11 +31,11 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="hidden lg:flex justify-center space-x-12 items-center">
-            <Link to="login" className="py-2 px-3 border rounded-md">
+            <Link to="/login" className="py-2 px-3 border rounded-md">
               Sign In
             </Link>
             <Link
-              to="signup"
+              to="/signup"
               className="bg-gradient-to-r from-green-500 to-green-800 py-2 px-3 rounded-md"
             >
               Create an account
