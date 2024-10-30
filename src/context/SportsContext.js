@@ -69,7 +69,7 @@ export const SportsProvider = ({ children }) => {
     try {
       dispatch({ type: "GET_DATA" });
       const res = await fetch(
-        `https://sportsplus-server.vercel.app/api/Formula1/racefixtures?season=2023`
+        `https://sportsplus-server.vercel.app/api/Formula1/racefixtures?season=2024`
       );
       if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -108,7 +108,7 @@ export const SportsProvider = ({ children }) => {
       console.log(selectedData);
       const { id } = selectedData;
       const res = await fetch(
-        `https://sportsplus-server.vercel.app/api/formula1/driverrankings`
+        `https://sportsplus-server.vercel.app/api/formula1/driverrankings?season=2024`
       );
       if (!res.ok) {
         throw new Error("Failed to fetch data");
