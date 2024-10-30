@@ -779,21 +779,144 @@
 //   );
 // }
 
+// import { useState } from "react";
+// import { useNavigate, Link } from "react-router-dom";
+// import { useAuthContext } from "../context/AuthContext";
+// import Tile from "../components/Tile";
+// import InputFields from "../components/InputFields";
+
+// export default function Signup() {
+//   const [currentStep, setCurrentStep] = useState(1); // Step state: 1 for user details, 2 for preferred sports
+
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     email: "",
+//     password: "",
+//     preferredSports: [], // Changed state structure for sports
+//   });
+
+//   const [required, setRequired] = useState("");
+//   const { createUser, isLoading } = useAuthContext();
+//   const navigate = useNavigate();
+
+//   const handleNext = (event) => {
+//     event.preventDefault();
+//     // Validate the first step fields
+//     if (
+//       !formData.firstName ||
+//       !formData.lastName ||
+//       !formData.email ||
+//       !formData.password
+//     ) {
+//       setRequired("Please fill out all required fields.");
+//       return;
+//     }
+//     setRequired("");
+//     setCurrentStep(2); // Move to the next step
+//   };
+
+//   async function handleSubmit(event) {
+//     event.preventDefault();
+//     const newUser = await createUser(formData);
+
+//     if (newUser) {
+//       navigate("/login");
+//     } else {
+//       setRequired("User already registered.");
+//     }
+//     // console.log(formData);
+//   }
+
+//   const toggleSportSelection = (sportName) => {
+//     setFormData((prevData) => {
+//       const sportExists = prevData.preferredSports.some(
+//         (sport) => sport.sport === sportName
+//       );
+
+//       // If the sport already exists, remove it from the array
+//       if (sportExists) {
+//         return {
+//           ...prevData,
+//           preferredSports: prevData.preferredSports.filter(
+//             (sport) => sport.sport !== sportName
+//           ),
+//         };
+//       }
+
+//       // If the sport does not exist, add it with an initial timeSpent value of 0
+//       return {
+//         ...prevData,
+//         preferredSports: [
+//           ...prevData.preferredSports,
+//           { sport: sportName, timeSpent: 0 },
+//         ],
+//       };
+//     });
+//   };
+
+//   return (
+//     <div className="flex justify-center items-center h-screen bg-gray-100 relative">
+//       {isLoading && <span className="loader"></span>}
+//       <form
+//         className={`bg-white p-6 rounded-lg shadow-md w-96 relative text-xs md:text-sm ${
+//           isLoading ? "blur-sm" : ""
+//         }`}
+//         onSubmit={currentStep === 1 ? handleNext : handleSubmit}
+//       >
+//         <h2 className="text-2xl font-bold mb-4 text-center">Signup</h2>
+//         <p className="py-4 text-red-500/90 tracking-wide text-xs md:text-sm">
+//           {required}
+//         </p>
+
+//         {currentStep === 1 && (
+//           <InputFields formData={formData} setFormData={setFormData} />
+//         )}
+//         {currentStep === 2 && (
+//           <>
+//             {/* Sports Selection Section */}
+//             <Tile
+//               formData={formData}
+//               setFormData={setFormData}
+//               toggleSportSelection={toggleSportSelection}
+//             />
+//             <button
+//               type="submit"
+//               className="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600 transition duration-300"
+//             >
+//               Submit
+//             </button>
+//           </>
+//         )}
+//         {currentStep === 1 && (
+//           <Link
+//             to="/login"
+//             className="text-xs font-medium flex items-center py-4"
+//           >
+//             Already have an account? Login Now! &rarr;
+//           </Link>
+//         )}
+//       </form>
+//     </div>
+//   );
+// }
+
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+import { FaGoogle } from "react-icons/fa";
+import Navbar from "../components/NavBar";
 import Tile from "../components/Tile";
 import InputFields from "../components/InputFields";
 
 export default function Signup() {
-  const [currentStep, setCurrentStep] = useState(1); // Step state: 1 for user details, 2 for preferred sports
-
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-    preferredSports: [], // Changed state structure for sports
+    preferredSports: [],
   });
 
   const [required, setRequired] = useState("");
@@ -802,7 +925,6 @@ export default function Signup() {
 
   const handleNext = (event) => {
     event.preventDefault();
-    // Validate the first step fields
     if (
       !formData.firstName ||
       !formData.lastName ||
@@ -813,7 +935,7 @@ export default function Signup() {
       return;
     }
     setRequired("");
-    setCurrentStep(2); // Move to the next step
+    setCurrentStep(2);
   };
 
   async function handleSubmit(event) {
@@ -825,7 +947,6 @@ export default function Signup() {
     } else {
       setRequired("User already registered.");
     }
-    // console.log(formData);
   }
 
   const toggleSportSelection = (sportName) => {
@@ -834,7 +955,6 @@ export default function Signup() {
         (sport) => sport.sport === sportName
       );
 
-      // If the sport already exists, remove it from the array
       if (sportExists) {
         return {
           ...prevData,
@@ -844,7 +964,6 @@ export default function Signup() {
         };
       }
 
-      // If the sport does not exist, add it with an initial timeSpent value of 0
       return {
         ...prevData,
         preferredSports: [
@@ -856,47 +975,62 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100 relative">
-      {isLoading && <span className="loader"></span>}
-      <form
-        className={`bg-white p-6 rounded-lg shadow-md w-96 relative text-xs md:text-sm ${
-          isLoading ? "blur-sm" : ""
-        }`}
-        onSubmit={currentStep === 1 ? handleNext : handleSubmit}
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">Signup</h2>
-        <p className="py-4 text-red-500/90 tracking-wide text-xs md:text-sm">
-          {required}
-        </p>
+    <>
+      <Navbar />
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] min-h-screen px-4 md:px-0">
+        <div className="bg-green-600/50 flex flex-col px-4 py-8 text-green-200 relative">
+          {isLoading && <span className="loader"></span>}
+          <p className="font-bold text-center text-3xl tracking-wide mb-6">
+            Create an Account
+          </p>
+          <div className="flex gap-2 justify-center mb-4">
+            <FaGoogle className="border-green-200 border-2 rounded-full text-4xl p-1" />
+          </div>
+          <p className="text-sm mb-4">or use your details to register.</p>
+          <p className="text-sm text-red-900">{required}</p>
 
-        {currentStep === 1 && (
-          <InputFields formData={formData} setFormData={setFormData} />
-        )}
-        {currentStep === 2 && (
-          <>
-            {/* Sports Selection Section */}
-            <Tile
-              formData={formData}
-              setFormData={setFormData}
-              toggleSportSelection={toggleSportSelection}
-            />
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          {currentStep === 1 && (
+            <div className="flex flex-col gap-4">
+              <InputFields formData={formData} setFormData={setFormData} />
+              <button
+                onClick={handleNext}
+                className="bg-green-900 text-2xl px-4 py-1 rounded-xl border-2 border-stone-300 mt-4"
+              >
+                Next
+              </button>
+            </div>
+          )}
+
+          {currentStep === 2 && (
+            <>
+              <Tile
+                formData={formData}
+                setFormData={setFormData}
+                toggleSportSelection={toggleSportSelection}
+              />
+              <button
+                type="submit"
+                className="bg-green-900 text-2xl px-4 py-1 rounded-xl border-2 border-stone-300 mt-4"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            </>
+          )}
+
+          {currentStep === 1 && (
+            <Link
+              to="/login"
+              className="text-xs font-medium flex items-center py-4"
             >
-              Submit
-            </button>
-          </>
-        )}
-        {currentStep === 1 && (
-          <Link
-            to="/login"
-            className="text-xs font-medium flex items-center py-4"
-          >
-            Already have an account? Login Now! &rarr;
-          </Link>
-        )}
-      </form>
-    </div>
+              Already have an account? Login Now! &rarr;
+            </Link>
+          )}
+        </div>
+        <div className="hidden md:block">
+          {/* Placeholder for image or additional content */}
+        </div>
+      </div>
+    </>
   );
 }

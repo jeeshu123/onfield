@@ -27,7 +27,9 @@ export default function Tile({ formData, toggleSportSelection }) {
               key={sport}
               onClick={() => toggleSportSelection(sport)}
               className={`cursor-pointer p-2 text-center border rounded-md ${
-                isSelected ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
+                isSelected
+                  ? "bg-green-500 text-stone-800"
+                  : "bg-green-200 text-stone-800"
               }`}
             >
               {sport}
