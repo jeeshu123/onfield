@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { SportsProvider } from "./context/SportsContext";
 import Application from "./pages/Application";
 import AppLayout from "./ui/AppLayout";
@@ -11,8 +11,16 @@ import { NewsProvider } from "./context/NewsContext";
 import Dashboard from "./pages/Dashboard";
 import SearchResults from "./pages/SearchResults";
 import NewsArticle from "./pages/NewsArticle";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 export default function App() {
+  ReactGA.initialize("G-ZDX8KWTMTE");
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
   return (
     <SportsProvider>
       <AuthProvider>
