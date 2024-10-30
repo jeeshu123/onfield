@@ -16,7 +16,7 @@ export default function Application() {
       <Navbar /> */}
       <Scores />
       <Breaking />
-      <Outlet />
+      {/* <Outlet /> */}
       <Latest />
       <CTA />
       <Footer />

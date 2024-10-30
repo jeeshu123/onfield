@@ -10,6 +10,7 @@
 // export default LatestNews;
 
 import React, { useEffect, useState, useCallback } from "react";
+import NewsItem from "../ui/NewsItem";
 // import axios from "axios";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -74,20 +75,24 @@ function LatestNews() {
   return (
     <div>
       <p className="italic font-bold text-2xl">Latest News</p>
-      <div>
+      <div className="flex flex-col gap-4 mt-4">
         {articles.map((article, index) => (
-          <div key={index} className="p-4 border-b">
-            <h2 className="font-semibold text-lg">{article.title}</h2>
-            <p>{article.description}</p>
-            <a
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 underline"
-            >
-              Read more
-            </a>
-          </div>
+          // <div key={index} className="py-4 px-4">
+          //   <img scr={article.image} alt="latest news" />
+          //   <div>
+          //     <h2 className="font-semibold text-lg">{article.title}</h2>
+          //     <p>{article.description}</p>
+          //     <a
+          //       href={article.url}
+          //       target="_blank"
+          //       rel="noopener noreferrer"
+          //       className="text-blue-500 underline"
+          //     >
+          //       Read more
+          //     </a>
+          //   </div>
+          // </div>
+          <LatestNewsItem article={article} key={index} />
         ))}
       </div>
       {loading && <p>Loading more articles...</p>}
@@ -96,3 +101,27 @@ function LatestNews() {
 }
 
 export default LatestNews;
+
+function LatestNewsItem({ article }) {
+  return (
+    <div className="flex gap-2">
+      <img
+        src={article.image}
+        alt={article.title}
+        className="w-48 object-cover rounded-md"
+      />
+      <div className="flex flex-col gap-2">
+        <p className="text-sm">{article.title}</p>
+        <p className="text-xs">{article.description}</p>
+        <a
+          href={article.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-900 mt-auto"
+        >
+          Read more
+        </a>
+      </div>
+    </div>
+  );
+}
