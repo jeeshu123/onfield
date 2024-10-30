@@ -6,6 +6,7 @@ import { filterSearchReuslts } from "../helpers/helper";
 const initialState = {
   breakingNews: [],
   searchResult: [],
+  latestNews: [],
 };
 
 const newsReducer = (state, action) => {
@@ -120,9 +121,9 @@ export function NewsProvider({ children }) {
     dispatch({ type: "UPDATE_SEARCH_RESULT", payload: articles });
   }
 
-  async function searchMoreResults() {
-    
-  }
+  async function searchMoreResults() {}
+
+  
 
   return (
     <NewsContext.Provider value={{ breakingNews, searchResult, getSearchNews }}>

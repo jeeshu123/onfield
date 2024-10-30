@@ -56,7 +56,7 @@ export default function Navbar() {
       <input
         type="text"
         placeholder="Search..."
-        className="bg-slate-300 rounded-full px-3 py-1 text-slate-90000"
+        className="rounded-full px-3 py-1 text-stone-200 bg-stone-900"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={(e) => {

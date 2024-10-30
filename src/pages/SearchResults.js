@@ -53,7 +53,7 @@ function SearchItem({ result }) {
         <div>
           <p className="text-xs font-bold mb-2">{result.title}</p>
           <p className="text-xs">{result.description}</p>
-          {/* <p className="text-xs">{result.title}</p> */}
+          
         </div>
       </div>
     </div>

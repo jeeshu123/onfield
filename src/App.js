@@ -9,18 +9,16 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import SignUp from "./pages/SignUp";
 import { NewsProvider } from "./context/NewsContext";
 import BreakingNewsArticle from "./pages/BreakingNewsArticle";
+import Dashboard from "./pages/Dashboard";
 import SearchResults from "./pages/SearchResults";
-// import Login from "./components/Auth";
 
 export default function App() {
   return (
     <SportsProvider>
       <AuthProvider>
-        {/* <RouterProvider router={router} /> */}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="login" element={<Login />} /> */}
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
 
@@ -34,8 +32,8 @@ export default function App() {
                 </ProtectedRoute>
               }
             >
-              {/* <Route path="dashboard" element={<Dashboard />} /> */}
               <Route index element={<Application />} />
+              <Route path="user/:id" element={<Dashboard />} />
               <Route path="breaking/:id" element={<BreakingNewsArticle />} />
               <Route path="search" element={<SearchResults />} />
             </Route>

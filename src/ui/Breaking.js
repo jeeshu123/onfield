@@ -49,7 +49,7 @@ export default function Breaking() {
           <div className="mt-4 relative">
             <img
               src={breakingNews.at(0) ? breakingNews.at(0).image : null}
-              className="sm:h-96 w-full lg:h-[36rem] brightness-50 rounded-md"
+              className="sm:h-96 w-full lg:h-[36rem] brightness-50 rounded-md object-cover"
               alt="breaking"
             />
             <div className="absolute bottom-0 py-4 px-2">
