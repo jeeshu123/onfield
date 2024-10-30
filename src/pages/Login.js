@@ -5,8 +5,8 @@ import { FaGoogle } from "react-icons/fa";
 import Navbar from "../components/NavBar";
 
 export default function Login() {
-  const [username, setUsername] = useState("ashfaq@gmail.com");
-  const [password, setPassword] = useState("ashfaq123");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const { validateUser, errorMessage, isLoading } = useAuthContext();
 
   const navigate = useNavigate();
