@@ -101,13 +101,13 @@ export function Dropdown({ options, onSelect }) {
         </svg>
       </button>
       {isOpen && (
-        <ul className="absolute w-full bg-slate-200 rounded-md shadow-md z-50">
+        <ul className="absolute w-full bg-stone-700 rounded-md shadow-md z-50">
           {options.map(
             (option, index) =>
               option.name !== selectedOption.name && (
                 <li
                   key={index}
-                  className="p-2 cursor-pointer hover:bg-gray-100"
+                  className="p-2 cursor-pointer hover:bg-stone-600"
                   onClick={() => handleSelect(option)}
                 >
                   {option.name}

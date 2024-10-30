@@ -1,7 +1,7 @@
 export default function CTA() {
   return (
     <div className="bg-gradient-to-r from-green-600 to-green-950 py-3 px-3">
-      <div className="px-3 py-6 grid grid-cols-1 gap-y-4 bg-green-100 md:w-9/12 lg:w-9/12 mx-auto lg:py-24 md:py-18 sm:py-12 rounded-xl md:grid-cols-2 ">
+      <div className="px-3 py-6 grid grid-cols-1 gap-y-4 text-stone-900 bg-green-200 md:w-9/12 lg:w-9/12 mx-auto lg:py-24 md:py-18 sm:py-12 rounded-xl md:grid-cols-2 ">
         <div className="flex flex-col gap-2 justify-center md:gap-4">
           {/* <span className="text-green-400">&larr;</span> */}
           <p className="text-xs font-semibold sm:text-sm md:text-2xl">

@@ -15,10 +15,9 @@ import NewsItem from "../ui/NewsItem";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = "https://gnews.io/api/v4/search";
-const QUERY = "messi"; // Customize your search query here
-const LANG = "en"; // Language filter
-// const COUNTRY = "us"; // Country filter
-const MAX_RESULTS = 10; // Number of articles per request
+const QUERY = "messi";
+const LANG = "en";
+const MAX_RESULTS = 10;
 
 function LatestNews() {
   const [articles, setArticles] = useState([]);
@@ -77,21 +76,6 @@ function LatestNews() {
       <p className="italic font-bold text-2xl">Latest News</p>
       <div className="flex flex-col gap-4 mt-4">
         {articles.map((article, index) => (
-          // <div key={index} className="py-4 px-4">
-          //   <img scr={article.image} alt="latest news" />
-          //   <div>
-          //     <h2 className="font-semibold text-lg">{article.title}</h2>
-          //     <p>{article.description}</p>
-          //     <a
-          //       href={article.url}
-          //       target="_blank"
-          //       rel="noopener noreferrer"
-          //       className="text-blue-500 underline"
-          //     >
-          //       Read more
-          //     </a>
-          //   </div>
-          // </div>
           <LatestNewsItem article={article} key={index} />
         ))}
       </div>

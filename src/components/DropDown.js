@@ -64,7 +64,7 @@ export default function DropDown({ content }) {
       <div
         className={`${
           isOpen ? "absolute h-auto" : "hidden"
-        } duration-300 bg-slate-400 w-40 rounded-md z-10`}
+        } duration-300 bg-stone-700 w-40 rounded-md z-10`}
       >
         <ul className="py-2 px-2 flex flex-col gap-2">
           {favourites.map(
