@@ -14,7 +14,7 @@
 //   );
 // }
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import DateWeather from "./DateWeather";
 import Header from "./Header";
@@ -23,7 +23,9 @@ import { FaChevronUp } from "react-icons/fa";
 
 export default function AppLayout() {
   const [showButton, setShowButton] = useState(false);
-
+  const location = useLocation();
+  const currentUrl = location.pathname;
+  console.log(currentUrl);
   useEffect(() => {
     const handleScroll = () => {
       setShowButton(window.scrollY > 300);
@@ -42,7 +44,11 @@ export default function AppLayout() {
     <>
       <DateWeather />
       <Header />
-      <Navbar />
+      {!currentUrl.includes("/app/user/") && (
+        <>
+          <Navbar />
+        </>
+      )}
       <Outlet />
 
       {showButton && (

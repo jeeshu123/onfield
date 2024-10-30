@@ -8,9 +8,9 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SignUp from "./pages/SignUp";
 import { NewsProvider } from "./context/NewsContext";
-import BreakingNewsArticle from "./pages/BreakingNewsArticle";
 import Dashboard from "./pages/Dashboard";
 import SearchResults from "./pages/SearchResults";
+import NewsArticle from "./pages/NewsArticle";
 
 export default function App() {
   return (
@@ -34,7 +34,7 @@ export default function App() {
             >
               <Route index element={<Application />} />
               <Route path="user/:id" element={<Dashboard />} />
-              <Route path="breaking/:id" element={<BreakingNewsArticle />} />
+              <Route path="article/:id" element={<NewsArticle />} />
               <Route path="search" element={<SearchResults />} />
             </Route>
           </Routes>

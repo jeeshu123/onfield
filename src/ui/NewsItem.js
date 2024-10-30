@@ -20,7 +20,7 @@ export default function NewsItem({ newsItem }) {
   const truncatedContent = truncateContent(newsItem.content, wordLimit);
 
   return (
-    <Link to={`breaking/${newsItem.id}`}>
+    <Link to={`article/${newsItem.id}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         <img
           src={newsItem.image || bg1}

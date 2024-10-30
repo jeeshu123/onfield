@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useNewsContext } from "../context/NewsContext";
 
-function BreakingNewsArticle() {
+function NewsArticle() {
   const { breakingNews } = useNewsContext();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -29,4 +29,4 @@ function BreakingNewsArticle() {
   );
 }
 
-export default BreakingNewsArticle;
+export default NewsArticle;
