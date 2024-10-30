@@ -19,7 +19,7 @@ export default function CTA() {
           <div className="flex flex-wrap gap-4 items-center">
             <input
               type="email"
-              className="flex-grow max-w-full rounded-full px-2 py-1 bg-green-200 md:px-4 md:py-2"
+              className="flex-grow max-w-full rounded-full px-2 py-1 bg-stone-200 md:px-4 md:py-2"
               placeholder="Enter Your Email..."
             />
             <p className="flex-grow-0 flex-shrink-0 font-medium text-sm md:text-base">
